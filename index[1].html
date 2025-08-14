@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Clash Royale Tournament Signup</title>
+<style>
+  :root{--royal:#2d5cff;--royal-dark:#2249da;--gold:#f5c400;--gold-dark:#c49f00;--bg1:#0b1f4a;--bg2:#0a1631;--card:#151a22;--ink:#e9f1ff;--muted:#9ab0ff;--line:rgba(255,255,255,.10);--good:#3ad1a7;--bad:#ff6b6b}
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+       background:radial-gradient(1200px 800px at 10% -10%, rgba(45,92,255,.25), transparent),radial-gradient(1000px 700px at 110% 10%, rgba(245,196,0,.18), transparent),linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+       min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px}
+  .wrap{width:100%;max-width:960px}
+  header{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+  .crown{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(180deg,var(--gold),var(--gold-dark));box-shadow:0 10px 24px rgba(0,0,0,.35), inset 0 2px 0 rgba(255,255,255,.35)}
+  h1{margin:0;font-size:28px;letter-spacing:.4px}
+  .tag{display:inline-block;margin-top:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(45,92,255,.35);background:rgba(45,92,255,.18);color:#cfe0ff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px}
+  .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+  @media (max-width:880px){.grid{grid-template-columns:1fr;}}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)), var(--card);border:1px solid rgba(255,255,255,.10);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.45);padding:18px}
+  label{display:block;font-weight:800;margin-bottom:8px}
+  input{width:100%;padding:14px 14px;border-radius:12px;background:#0f1320;color:var(--ink);border:1px solid rgba(255,255,255,.12);outline:none;font-size:15px}
+  input::placeholder{color:#8fa3ff}
+  input:focus{border-color:var(--royal);box-shadow:0 0 0 4px rgba(45,92,255,.18)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:none;background:linear-gradient(180deg,var(--royal),var(--royal-dark));color:white;font-weight:900;letter-spacing:.4px;cursor:pointer;box-shadow:0 10px 22px rgba(45,92,255,.35)}
+  .btn.secondary{background:linear-gradient(180deg,#2a3347,#202634);color:#cfe0ff;border:1px solid rgba(255,255,255,.08)}
+  .btn.warn{background:linear-gradient(180deg,#a02,#701)}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .hint{font-size:12px;color:#9ab0ff;margin-top:6px}
+  .msg{margin-top:10px;font-size:14px}
+  .msg.ok{color:#3ad1a7}.msg.err{color:#ff6b6b}
+  table{width:100%;border-collapse:separate;border-spacing:0 10px;margin-top:10px}
+  th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:#9ab0ff;padding:0 12px}
+  td{background:#0f1320;border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px;color:#dbe6ff}
+  .pill{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:#0f1320;color:#cfe0ff;font-size:12px}
+  .rowbtn{display:inline-flex;gap:6px}
+  .hide{display:none !important}
+  footer{margin-top:20px;color:#cfe0ff;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="crown" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 7l3 3 3-5 3 5 3-3 3 5v7H3V7z" opacity=".2"/>
+          <path d="M21 18H3v-7l3 3 3-6 3 6 3-3 6 7z" fill="#fff"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Clash Royale Tournament Signup</h1>
+        <span class="tag" id="eventTag">Saturday, August 23 • 10:00 AM EST</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <form id="signupForm" autocomplete="off">
+          <div class="row">
+            <div>
+              <label for="cr">Clash Royale Username</label>
+              <input id="cr" placeholder="e.g., Evo9t8" maxlength="25" required
+                     autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <div class="hint">Autocorrect is off. Your exact text will be saved.</div>
+            </div>
+            <div>
+              <label for="ds">Discord Username</label>
+              <input id="ds" placeholder="e.g., yourname#1234 or yourname" maxlength="32" required
+                     autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <div class="hint">Legacy <code>name#1234</code> or the new handle format (no spaces).</div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit">➕ Add Player</button>
+            <button class="btn secondary hide" type="button" id="exportBtn">⬇️ Export CSV</button>
+            <button class="btn secondary hide" type="button" id="refreshBtn">🔄 Refresh</button>
+            <button class="btn warn hide" type="button" id="clearBtn">🗑️ Clear List</button>
+          </div>
+          <div id="msg" class="msg" role="status" aria-live="polite"></div>
+        </form>
+
+        <table id="table" class="hide" aria-label="Registered Players">
+          <thead>
+            <tr>
+              <th>#</th><th>Clash Royale</th><th>Discord</th><th>Added</th><th class="hostcol hide">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </section>
+
+      <aside class="card">
+        <h3 style="margin:0 0 10px 0">Event Details</h3>
+        <p style="margin:0 0 8px;color:#cfe0ff">🗓 <strong>Saturday, August 23</strong></p>
+        <p style="margin:0 0 8px;color:#cfe0ff">⏰ <strong>10:00 AM EST</strong></p>
+        <p style="margin:0 0 14px;color:#cfe0ff">📍 Online — Link shared in Discord at check-in</p>
+        <div class="pill">Format: 1v1 Bracket</div>
+        <div class="pill" style="margin-top:8px">Check-in: 15 mins before start</div>
+        <div class="pill" style="margin-top:8px">Rules: No emote spam • Be respectful</div>
+        <p class="hint" style="margin-top:10px">Host tip: Use <code>?mode=host</code> for admin view (PIN required).</p>
+      </aside>
+    </div>
+
+    <footer>
+      <div>No login • Local-only list • Export to CSV</div>
+      <div><span class="pill">Player view</span> <span class="pill">Host view</span></div>
+    </footer>
+  </div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'cr_signup_players_v3';
+  const ADMIN_PIN = '4747'; // change if you want
+  const qs = new URLSearchParams(location.search);
+  const MODE = (qs.get('mode') || 'player').toLowerCase();
+
+  const form = document.getElementById('signupForm');
+  const cr = document.getElementById('cr');
+  const ds = document.getElementById('ds');
+  const tbody = document.getElementById('tbody');
+  const table = document.getElementById('table');
+  const msg = document.getElementById('msg');
+  const exportBtn = document.getElementById('exportBtn');
+  const refreshBtn = document.getElementById('refreshBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const hostCols = document.getElementsByClassName('hostcol');
+
+  // New sanitizers
+  function sanitizeCR(s){
+    // Remove tabs/newlines/carriage returns and NBSP
+    s = String(s||'').replace(/[\t\r\n\u00A0]/g,'');
+    // Collapse multiple spaces to single
+    s = s.replace(/\s{2,}/g,' ');
+    return s.trim();
+  }
+  function sanitizeDiscord(s){
+    // Remove all whitespace, force lowercase
+    s = String(s||'').toLowerCase().replace(/\s+/g,'');
+    return s.trim();
+  }
+
+  function toast(text,ok=true){ msg.textContent=text; msg.className='msg '+(ok?'ok':'err'); setTimeout(()=>{msg.textContent=''; msg.className='msg'},3000) }
+  function load(){ try{const arr=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]'); return Array.isArray(arr)?arr:[]}catch(e){return[]} }
+  function save(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list||[])) }
+  function show(el){ el.classList.remove('hide') } function hide(el){ el.classList.add('hide') }
+
+  function render(){
+    const list = load();
+    tbody.innerHTML='';
+    list.forEach((p,i)=>{
+      const tr=document.createElement('tr');
+      const d=new Date(p.ts||Date.now());
+      tr.innerHTML=`
+        <td><span class="pill">${i+1}</span></td>
+        <td>${p.cr}</td>
+        <td>${p.ds}</td>
+        <td style="color:#9ab0ff">${d.toLocaleString()}</td>
+        <td class="hostcol hide"><button class="btn secondary" data-idx="${i}" data-act="del">Remove</button></td>`;
+      tbody.appendChild(tr);
+    });
+    if (isHost) { for (const th of hostCols) th.classList.remove('hide'); }
+  }
+
+  let isHost=false;
+  if (MODE==='host'){
+    const pin=prompt('Host PIN:');
+    if (pin===ADMIN_PIN){
+      isHost=true; show(exportBtn); show(refreshBtn); show(clearBtn); show(table); render();
+      tbody.addEventListener('click', (e)=>{
+        const btn=e.target.closest('button[data-act]'); if(!btn) return;
+        const idx=Number(btn.getAttribute('data-idx'));
+        if (btn.getAttribute('data-act')==='del'){
+          const list=load();
+          if (idx>=0 && idx<list.length && confirm('Remove this entry?')){ list.splice(idx,1); save(list); render(); toast('Removed.') }
+        }
+      });
+    } else {
+      alert('Invalid PIN. Loading player view.');
+    }
+  }
+  if (!isHost){ hide(table) }
+
+  // Live guard: sanitize as the user types
+  ['input','change','blur'].forEach(evt=>{
+    cr.addEventListener(evt, ()=>{ cr.value = sanitizeCR(cr.value) });
+    ds.addEventListener(evt, ()=>{ ds.value = sanitizeDiscord(ds.value) });
+  });
+
+  form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const crName = sanitizeCR(cr.value);
+    const dsName = sanitizeDiscord(ds.value);
+
+    if (crName.length<2) return toast('Enter a valid Clash Royale name (min 2 chars).', false);
+    const legacy=/^.{2,32}#[0-9]{4}$/; const newusr=/^[a-z0-9._]{2,32}$/;
+    if (!(legacy.test(dsName)||newusr.test(dsName))) return toast('Enter a valid Discord (name#1234 or new username).', false);
+
+    const list=load();
+    const dupe=list.some(p=>p.cr.toLowerCase()===crName.toLowerCase()||p.ds===dsName);
+    if (dupe) return toast('This Clash Royale or Discord is already registered.', false);
+
+    list.push({cr:crName, ds:dsName, ts:Date.now()}); save(list);
+    cr.value=''; ds.value=''; if (isHost) render(); toast('Player added!');
+  });
+
+  exportBtn?.addEventListener('click', ()=>{
+    const list=load(); if (list.length===0) return toast('No players yet.', false);
+    const rows=[['#','ClashRoyale','Discord','AddedISO']];
+    list.forEach((p,i)=>rows.push([i+1,p.cr,p.ds,new Date(p.ts).toISOString()]));
+    const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    const url=URL.createObjectURL(blob); const a=document.createElement('a');
+    a.href=url; a.download='clash_tournament_players.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  });
+
+  refreshBtn?.addEventListener('click', render);
+  clearBtn?.addEventListener('click', ()=>{ if (confirm('Clear ENTIRE list on this device?')){ save([]); render(); toast('List cleared.') } });
+
+  if (isHost) render();
+})();
+</script>
+</body>
+</html>
